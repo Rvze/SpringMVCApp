@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+<div>
+    <form method="post">
+        <input type="text" name="name" placeholder="name">
+        <input type="number" name="id" placeholder="id">
+        <input type="text" name="password" placeholder="password">
+        <input type="text" name="mail" placeholder="mail">
+        <input type="hidden" name="auditId" value="">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>mail</th>
+    </tr>
+    {{#users}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{mail}}</td>
+        </tr>
+    {{/users}}
+</table>
+
+<table>
+    <tr>
+        <th>audit id</th>
+        <th>action type</th>
+        <th>date time</th>
+        <th>user id</th>
+    </tr>
+    {{#audits}}
+        <tr>
+            <td>{{auditId}}</td>
+            <td>{{actionType}}</td>
+            <td>{{dateTime}}</td>
+            <td>{{userId}}</td>
+        </tr>
+    {{/audits}}
+</table>
+
+<table>
+    <tr>
+        <th>token id</th>
+        <th>audit id</th>
+        <th>user id</th>
+        <th>date time</th>
+    </tr>
+    {{#accessTokens}}
+        <tr>
+            <td>{{tokenId}}</td>
+            <td>{{auditId}}</td>
+            <td>{{userId}}</td>
+            <td>{{dateTime}}</td>
+        </tr>
+    {{/accessTokens}}
+</table>
+
+</body>
+</html>

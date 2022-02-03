@@ -25,7 +25,6 @@ public class Audit implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer auditId;
     private Integer userId;
-    @Size(min = -128, max = 127, message = "Action type should be between -128 and 127 character")
     private int actionType;
     private Date dateTime;
 
@@ -35,6 +34,10 @@ public class Audit implements Serializable {
                 .actionType(actionType)
                 .dateTime(new Date(System.currentTimeMillis()))
                 .build();
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = new Date(System.currentTimeMillis());
     }
 
 }

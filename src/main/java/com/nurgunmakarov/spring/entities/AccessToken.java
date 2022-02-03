@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -26,7 +27,7 @@ public class AccessToken implements Serializable {
     private Integer userId;
     private Date dateTime;
 
-    public AccessToken buildAccessToken(Audit audit, Long time) {
+    public AccessToken buildAccessToken(Audit audit, long time) {
         Date date = new Date(audit.getDateTime().getTime() + time);
         return AccessToken.builder()
                 .auditId(audit.getAuditId())
